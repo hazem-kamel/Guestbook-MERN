@@ -1,0 +1,171 @@
+.chats-container {
+  margin-top: 30px;
+  position: relative;
+  left: 210px;
+}
+.friends-list {
+  width: 180px;
+  float: left;
+  overflow: hidden;
+  height: 540px;
+  margin-left: 120px;
+  overflow-y: scroll;
+  margin-right: 5px;
+  background: #f2f5f8;
+  border-radius: 5px;
+  font: 12px/10px "Lato", Arial, sans-serif;
+}
+.friend {
+  display: inline-block;
+  margin-inline-end: 20px;
+}
+.friend-about {
+  color: black;
+  font-size: 12px;
+  font-weight: bold;
+}
+.chat-window {
+  width: 540px;
+  height: 540px;
+  float: left;
+  background: #f2f5f8;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  color: #434651;
+  border-radius: 5px;
+  font: 10px/10px "Lato", Arial, sans-serif;
+}
+.chat-header {
+  padding: 20px;
+  border-bottom: 2px solid white;
+  height: 20px;
+}
+.friend-name {
+  color: #434651;
+  font-size: 18px;
+  margin-left: 40px;
+  font-weight: bold;
+}
+.message-list {
+  padding-bottom: 10px;
+  list-style: none;
+}
+img {
+  float: left;
+  height: 30px;
+  width: 30px;
+}
+
+.about {
+  float: left;
+  padding-left: 8px;
+  margin-top: 8px;
+}
+
+.chat-with {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.chat-history {
+  padding: 6px 6px 0px;
+  border-bottom: 2px solid white;
+  overflow: auto;
+  display: flex;
+  flex-direction: column-reverse;
+  height: 400px;
+}
+.message-data {
+  margin-bottom: 10px;
+}
+
+.message-data-time {
+  color: lighten(gray, 8%);
+  padding-left: 6px;
+  margin: 3px;
+}
+
+.message {
+  color: white;
+  padding: 18px 20px;
+  line-height: 21px;
+  font-size: 12px;
+  border-radius: 7px;
+  margin-bottom: 20px;
+  width: 90%;
+  position: relative;
+}
+
+.my-message {
+  background: rgb(78, 133, 78);
+}
+
+.other-message {
+  background: rgb(159, 159, 247);
+}
+
+.chat-message {
+  padding: 10px;
+  background-color: yellow;
+}
+.message-to-send {
+  width: 90%;
+  border-color: none;
+  height: 15px;
+  padding: 10px 5px;
+  font: 14px/22px "Lato", Arial, sans-serif;
+  margin-bottom: 5px;
+  border-radius: 3px;
+  margin-top: 10px;
+  resize: none;
+  margin-left: 10px;
+}
+
+.send-button {
+  float: right;
+  color: rgb(50, 2, 99);
+  font-size: 21px;
+  cursor: pointer;
+  margin-right: 5px;
+  margin-top: 20px;
+  width: 120px;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.float-right {
+  float: right;
+}
+
+.box {
+  position: relative;
+  height: 30px;
+  margin: 10px;
+  padding: 5px;
+}
+.box:hover {
+  background-color: rgb(229, 210, 232);
+  cursor: pointer;
+}
+.friendName {
+  position: absolute;
+  color: black;
+  font-weight: bold;
+  left: 40px;
+  text-align: center;
+  font-size: 14px;
+}
+.friendAvatar {
+  position: absolute;
+}
+
+.noFriends {
+  color: black;
+  font-size: medium;
+}

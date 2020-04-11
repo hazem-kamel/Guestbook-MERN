@@ -1,0 +1,19 @@
+.chat-button {
+  position: relative;
+  bottom: 95px;
+  left: 750px;
+  border-radius: 10px;
+  height: 45px;
+  padding: 5px;
+  font-size: 30px;
+}
+i {
+  color: #ffffff;
+  font-size: 20px;
+  position: relative;
+  bottom: 60px;
+  left: 1030px;
+}
+.logout.p {
+  color: black;
+}
