@@ -107,12 +107,14 @@ app.get("/friends", (req, res) => {
     res.send("You are not authorised please login");
   }
 });
+
 //Get Messages for a specific conversation
 app.post("/chat", (req, res) => {
   convID = (req.body.username.toUpperCase() + req.body.friend.toUpperCase())
     .split("")
     .sort()
     .join("");
+
   Room.findOne({ name: convID })
     .then((room) => {
       res.send(room.messages);
@@ -129,7 +131,6 @@ io.on("connection", (socket) => {
     console.log("user disconnected");
   });
 });
-
 //Post Message in a specific Conversation
 app.post("/messages", (req, res) => {
   convID = (req.body.username.toUpperCase() + req.body.friend.toUpperCase())
@@ -157,6 +158,7 @@ app.post("/messages", (req, res) => {
     if (room) {
       room.messages.push(messageData);
       room.save();
+      io.emit("newmessage", { message: messageData });
     } else {
       Room.create(newMessageData)
         .then((room) => {

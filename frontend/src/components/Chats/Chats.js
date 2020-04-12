@@ -42,9 +42,15 @@ const Chat = (props) => {
       .catch((e) => {
         console.log("Cant fetch Chat ", e);
       });
-  }, [props.history.location.pathname]);
+  }, [props.history.location.pathname, conversation]);
   const sendMessage = (messageData) => {
     document.getElementById("message-to-send").value = "";
+    socket.on("newmessage", function (data) {
+      addMessages(data);
+      function addMessages(message) {
+        document.getElementById("messages").append(<p>{message.message}</p>);
+      }
+    });
     Axios.post(
       "/messages",
       {
@@ -57,14 +63,12 @@ const Chat = (props) => {
         crossdomain: true,
       }
     )
-      .then((res) => {
-        console.log("Response", res);
-      })
+      .then((res) => {})
       .catch((e) => {
         console.log("Cant Register ", e);
       });
-    console.log(messageData);
   };
+
   return (
     <div>
       <div>
@@ -118,7 +122,7 @@ const Chat = (props) => {
             <ul className="chat-ul-history">
               {conversation.map((message, key) => {
                 return (
-                  <li className="message-list" key={key}>
+                  <li id="messages" className="message-list" key={key}>
                     {message.sender === user ? (
                       <>
                         <div className="message-data align-right">
