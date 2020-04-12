@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { LoginAction } from "../../Redux/Actions";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
@@ -7,6 +7,9 @@ import { connect } from "react-redux";
 import { useAlert } from "react-alert";
 
 const Login = (props) => {
+  useEffect(() => {
+    Redirect();
+  }, [props.session]);
   let history = useHistory();
   const alert = useAlert();
 
@@ -18,14 +21,13 @@ const Login = (props) => {
       password: data.password,
     };
     props.login(userData);
-    setTimeout(1000, Redirect());
   };
   const Redirect = () => {
     if (props.session.user) {
       console.log(props.session);
       sessionStorage.setItem("storedSession", props.session.user.username);
       history.push("/dashboard");
-    } else {
+    } else if (props.session.error) {
       alert.show(<div style={{ size: "10px" }}>{props.session.error}</div>);
     }
   };

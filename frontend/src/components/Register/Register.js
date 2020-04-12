@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { RegisterAction } from "../../Redux/Actions";
 import { useHistory } from "react-router-dom";
@@ -7,6 +7,9 @@ import "./Register.css";
 import { useAlert } from "react-alert";
 
 const SignUp = (props) => {
+  useEffect(() => {
+    Redirect();
+  }, [props.session]);
   const alert = useAlert();
   let history = useHistory();
   const { handleSubmit, register, errors } = useForm();
@@ -17,16 +20,13 @@ const SignUp = (props) => {
       gender: data.gender,
     };
     props.register(userData);
-    setTimeout(() => {
-      Redirect();
-    }, 1000);
   };
 
   const Redirect = () => {
     if (props.session.user) {
       sessionStorage.setItem("storedSession", props.session.user.username);
       history.push("/dashboard");
-    } else {
+    } else if (props.session.error) {
       alert.show(<div style={{ size: "10px" }}>{props.session.error}</div>);
     }
   };
