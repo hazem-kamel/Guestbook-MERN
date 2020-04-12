@@ -4,8 +4,11 @@ import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import "./Login.css";
 import { connect } from "react-redux";
+import { useAlert } from "react-alert";
+
 const Login = (props) => {
   let history = useHistory();
+  const alert = useAlert();
 
   const { handleSubmit, register, errors } = useForm();
 
@@ -15,7 +18,7 @@ const Login = (props) => {
       password: data.password,
     };
     props.login(userData);
-    setTimeout(2000, Redirect());
+    setTimeout(1000, Redirect());
   };
   const Redirect = () => {
     if (props.session.user) {
@@ -23,7 +26,7 @@ const Login = (props) => {
       sessionStorage.setItem("storedSession", props.session.user.username);
       history.push("/dashboard");
     } else {
-      console.log(props.session.error);
+      alert.show(<div style={{ size: "10px" }}>{props.session.error}</div>);
     }
   };
   return (

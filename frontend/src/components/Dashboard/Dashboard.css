@@ -1,19 +1,73 @@
-.chat-button {
-  position: relative;
-  bottom: 95px;
-  left: 750px;
+.logout {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  cursor: pointer;
+  font-size: larger;
+  font-weight: bolder;
+  color: white;
+}
+.logout:hover {
+  color: blueviolet;
+}
+.welcome-message {
+  margin: auto;
+  width: 70%;
+}
+.welcome-message h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.new-user {
+  margin: 0px 360px;
+  width: 40%;
+  display: inline-flex;
+}
+.friend-name {
   border-radius: 10px;
-  height: 45px;
-  padding: 5px;
+  height: 25px;
+  margin: 5px 0px;
+}
+.chat-button {
+  border-radius: 10px;
   font-size: 30px;
+  padding: 5px;
+  margin: 5px 5px;
 }
-i {
-  color: #ffffff;
-  font-size: 20px;
+
+.friends-dashboard-container {
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid rgb(206, 208, 218);
+  border-radius: 10px;
+  height: 310px;
+  width: 130px;
+  overflow-y: scroll;
+}
+
+.dashboard-friend-box {
+  height: 30px;
+  flex: auto;
+  cursor: pointer;
+  margin: 10px;
+  width: 110px;
+}
+.dashboard-friend-box:hover {
+  background-color: rgb(102, 107, 250);
+}
+
+.dashboard-friendName {
+  right: -13px;
   position: relative;
-  bottom: 60px;
-  left: 1030px;
-}
-.logout.p {
   color: black;
+  font-size: small;
+  font-weight: bold;
+  text-align: center;
+  margin: 0px;
+}
+.chatsp {
+  font-size: medium;
 }

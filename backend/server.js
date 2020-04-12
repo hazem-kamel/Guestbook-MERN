@@ -113,7 +113,6 @@ app.post("/chat", (req, res) => {
     .split("")
     .sort()
     .join("");
-  console.log(convID);
   Room.findOne({ name: convID })
     .then((room) => {
       res.send(room.messages);
@@ -122,6 +121,14 @@ app.post("/chat", (req, res) => {
       console.log(err);
     });
 });
+const io = socketio(server);
+
+io.on("connection", (socket) => {
+  console.log("user connected");
+  socket.on("disconnect", () => {
+    console.log("user disconnected");
+  });
+});
 
 //Post Message in a specific Conversation
 app.post("/messages", (req, res) => {
@@ -129,14 +136,15 @@ app.post("/messages", (req, res) => {
     .split("")
     .sort()
     .join("");
+
   let newDate = new Date(Date.now()).toLocaleString("en-GB");
-  console.log(newDate);
+
   let messageData = {
     sender: req.body.username.toUpperCase(),
     message: req.body.message,
     dateCreated: newDate,
   };
-  console.log(messageData.dateCreated);
+
   let newMessageData = {
     name: convID,
     participants: [
@@ -145,12 +153,10 @@ app.post("/messages", (req, res) => {
     ],
     messages: messageData,
   };
-
   Room.findOne({ name: convID }).then((room) => {
     if (room) {
       room.messages.push(messageData);
       room.save();
-      res.send(room.messages);
     } else {
       Room.create(newMessageData)
         .then((room) => {
@@ -161,11 +167,6 @@ app.post("/messages", (req, res) => {
         });
     }
   });
-});
-
-const io = socketio(server);
-io.on("connection", (socket) => {
-  console.log("user connected");
 });
 
 const PORT = process.env.PORT || 6000;

@@ -8,7 +8,6 @@ import { useAlert } from "react-alert";
 
 const SignUp = (props) => {
   const alert = useAlert();
-
   let history = useHistory();
   const { handleSubmit, register, errors } = useForm();
   const onSubmit = (data) => {
@@ -18,11 +17,13 @@ const SignUp = (props) => {
       gender: data.gender,
     };
     props.register(userData);
-    setTimeout(2000, Redirect());
+    setTimeout(() => {
+      Redirect();
+    }, 1000);
   };
+
   const Redirect = () => {
     if (props.session.user) {
-      console.log(props.session.user);
       sessionStorage.setItem("storedSession", props.session.user.username);
       history.push("/dashboard");
     } else {

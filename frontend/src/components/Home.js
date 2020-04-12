@@ -1,6 +1,11 @@
 import React from "react";
 import "./Home.css";
-const Home = () => {
+const Home = (props) => {
+  let storedSession = sessionStorage.getItem("storedSession");
+  console.log(storedSession);
+  if (storedSession) {
+    props.history.push("/dashboard");
+  }
   return (
     <div>
       <h3>Guestbook</h3>
