@@ -3,7 +3,6 @@ const users = express.Router();
 const bcrypt = require("bcrypt");
 const User = require("../Config/Register");
 const session = require("../Session/Session");
-
 users.post("/register", (req, res) => {
   const Today = new Date();
   let userData = new User({

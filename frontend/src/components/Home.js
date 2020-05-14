@@ -7,7 +7,7 @@ const Home = (props) => {
     props.history.push("/dashboard");
   }
   return (
-    <div>
+    <div className="home">
       <h3>Guestbook</h3>
       <p>Contact and Chat with your friends with the best live chat app </p>
       <p> &lt; / &gt;</p>

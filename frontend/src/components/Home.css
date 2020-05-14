@@ -1,3 +1,6 @@
+.home {
+  text-align: center;
+}
 h3 {
   color: white;
   font-weight: bolder;
@@ -10,14 +13,12 @@ p {
   text-align: center;
 }
 .buttons {
-  margin-left: 390px;
-  margin-top: 120px;
+  margin: auto;
 }
 button {
   background-color: rgb(102, 107, 250);
   color: white;
   border: 2px solid transparent;
-
   box-shadow: none;
   text-decoration: none;
   text-shadow: none;
@@ -27,5 +28,13 @@ button {
   margin: 30px;
   border-radius: 40px;
 }
-button:hover {
+@media only screen and (max-width: 600px) {
+  .home p {
+    font-size: 20px;
+  }
+  .home .buttons {
+    font-size: 15px;
+    margin: 15px;
+    padding: 5px;
+  }
 }

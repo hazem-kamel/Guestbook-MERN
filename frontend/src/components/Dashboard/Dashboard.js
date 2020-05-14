@@ -54,7 +54,7 @@ const Dashboard = (props) => {
       });
   };
   return (
-    <div>
+    <div className="dash">
       <div
         className="logout"
         onClick={(e) => {
@@ -91,8 +91,8 @@ const Dashboard = (props) => {
         )}
       </div>
       <div className="welcome-message">
-        <h3>Live Chat Now With Your Friends</h3>
         <h3>Welcome {storedSession}</h3>
+        <h3>Live Chat Now With Your Friends</h3>
       </div>
       <div className="new-user">
         <input

@@ -1,11 +1,11 @@
 .login {
-  margin: 20px auto;
-  width: 600px;
+  margin: auto;
+  width: 100%;
 }
 .login-form {
   padding: 20px;
   height: 500px;
-  margin: 20px;
+  margin: auto;
   text-align: center;
 }
 .title {

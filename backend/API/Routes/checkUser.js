@@ -1,7 +1,6 @@
 const express = require("express");
 const checkUser = express.Router();
 const User = require("../Config/Register");
-
 checkUser.post("/check", (req, res) => {
   User.findOne({
     username: req.body.username,

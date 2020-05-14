@@ -10,16 +10,11 @@ const bodyParser = require("body-parser");
 const socketio = require("socket.io");
 const Room = require("./API/Config/Chats");
 const connectDB = require("./MongoDB/Mongo");
-const User = require("./API/Config/Register");
 const app = express();
-
 //Passport config
 require("./API/Config/Passport")(passport);
-
 connectDB();
-
 const server = http.createServer(app);
-
 //cors
 const options = {
   allowedHeaders: [
@@ -35,14 +30,11 @@ const options = {
   origin: true,
 };
 app.use(cors(options));
-
 //This makes it more difficult for users to see that we are using Express for security
 app.disable("x-powered-by");
-
 // Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
-
 // Express session
 const MongoStore = connectStore(session);
 const SESS_NAME = "sid";
@@ -65,22 +57,18 @@ app.use(
     },
   })
 );
-
 //import Routes
 const register = require("./API/Routes/User");
 const userLogin = require("./API/Routes/login");
 const checkUser = require("./API/Routes/checkUser");
-
 //To extract json data from Client(post) requests and urlencoded with bodyparser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
-
 //Make server use the routes
 app.use("/api", register);
 app.use("/api", userLogin);
 app.use("/api", checkUser);
-
 //Get All Friends
 app.get("/friends", (req, res) => {
   if (req.session.user) {
@@ -107,14 +95,12 @@ app.get("/friends", (req, res) => {
     res.send("You are not authorised please login");
   }
 });
-
 //Get Messages for a specific conversation
 app.post("/chat", (req, res) => {
   convID = (req.body.username.toUpperCase() + req.body.friend.toUpperCase())
     .split("")
     .sort()
     .join("");
-
   Room.findOne({ name: convID })
     .then((room) => {
       res.send(room.messages);
@@ -124,7 +110,6 @@ app.post("/chat", (req, res) => {
     });
 });
 const io = socketio(server);
-
 io.on("connection", (socket) => {
   console.log("user connected");
   socket.on("disconnect", () => {
@@ -137,15 +122,12 @@ app.post("/messages", (req, res) => {
     .split("")
     .sort()
     .join("");
-
   let newDate = new Date(Date.now()).toLocaleString("en-GB");
-
   let messageData = {
     sender: req.body.username.toUpperCase(),
     message: req.body.message,
     dateCreated: newDate,
   };
-
   let newMessageData = {
     name: convID,
     participants: [
@@ -170,9 +152,7 @@ app.post("/messages", (req, res) => {
     }
   });
 });
-
 const PORT = process.env.PORT || 6000;
-
 server.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
 });

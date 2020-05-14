@@ -3,7 +3,6 @@ const user = express.Router();
 const passport = require("passport");
 const sessionizeUser = require("../Session/Session");
 const SESS_NAME = "sid";
-
 //login
 user.post("/login", (req, res, next) => {
   passport.authenticate("local", { session: false }, (err, user, info) => {
@@ -20,7 +19,6 @@ user.post("/login", (req, res, next) => {
     }
   })(req, res, next);
 });
-
 //logout
 user.delete("/login", ({ session }, res) => {
   try {
@@ -38,5 +36,4 @@ user.delete("/login", ({ session }, res) => {
     res.status(422).send(err);
   }
 });
-
 module.exports = user;

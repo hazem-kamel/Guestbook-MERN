@@ -1,6 +1,7 @@
 .register {
   margin: 20px auto;
-  width: 600px;
+  width: 100%;
+  justify-content: center;
 }
 .register-form {
   padding: 20px;

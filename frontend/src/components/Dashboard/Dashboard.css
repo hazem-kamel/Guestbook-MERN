@@ -1,10 +1,7 @@
 .logout {
-  position: absolute;
+  position: relative;
   top: 0;
-  right: 0;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  text-align: center;
+  left: 30px;
   cursor: pointer;
   font-size: larger;
   font-weight: bolder;
@@ -15,16 +12,18 @@
 }
 .welcome-message {
   margin: auto;
-  width: 70%;
+  position: relative;
+  bottom: 260px;
+  width: 60%;
 }
 .welcome-message h3 {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin: 20px;
+  font-size: 45px;
 }
 .new-user {
-  margin: 0px 360px;
-  width: 40%;
-  display: inline-flex;
+  position: relative;
+  justify-content: center;
+  display: flex;
 }
 .friend-name {
   border-radius: 10px;
@@ -37,17 +36,15 @@
   padding: 5px;
   margin: 5px 5px;
 }
-
 .friends-dashboard-container {
   padding: 10px;
   margin: 10px;
   border: 1px solid rgb(206, 208, 218);
   border-radius: 10px;
-  height: 310px;
   width: 130px;
+  height: 50%;
   overflow-y: scroll;
 }
-
 .dashboard-friend-box {
   height: 30px;
   flex: auto;
@@ -58,7 +55,6 @@
 .dashboard-friend-box:hover {
   background-color: rgb(102, 107, 250);
 }
-
 .dashboard-friendName {
   right: -13px;
   position: relative;
@@ -70,4 +66,28 @@
 }
 .chatsp {
   font-size: medium;
+}
+@media only screen and (max-width: 600px) {
+  .dash {
+    justify-content: center;
+  }
+  .welcome-message h3 {
+    font-size: 15px;
+  }
+  .friends-dashboard-container {
+    position: relative;
+    top: 90px;
+    margin: auto;
+  }
+  .new-user {
+    position: relative;
+    right: 30px;
+  }
+  .new-user input {
+    font-size: 12px;
+    width: 210px;
+  }
+  .logout {
+    color: rgb(155, 132, 0);
+  }
 }
