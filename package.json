@@ -10,9 +10,6 @@
     "install-client": "cd client && npm install",
     "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build "
   },
-  "engines": {
-    "node": "13.8.0"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
